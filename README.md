@@ -22,3 +22,31 @@ The dataset utilizes a strict word-by-word token classification structure. Every
 
 ---
 *Built for the Code Saviours Cohort SI-26 Machine Learning Pipeline.*
+
+## Overview
+This repository contains the Week 7 deliverables for Project 2 of the Machine Learning Internship at Code Saviours (SMC-Private) Limited. Following the data collection and annotation phase, this week focused on fine-tuning a state-of-the-art transformer model to perform token classification on Roman Urdu and English code-switched text.
+
+## Methodology & Training
+The base model `xlm-roberta-base` was fine-tuned to classify individual words in mixed-language sentences into one of three distinct categories: `URD` (Roman Urdu), `ENG` (English), and `MIX` (Hybrid/Morphological blends). 
+
+*   **Base Model:** `xlm-roberta-base`
+*   **Dataset:** Custom dataset of 152 manually annotated code-switched sentences.
+*   **Hardware:** NVIDIA T4 GPU 
+*   **Training Hyperparameters:** 5 Epochs, Batch Size of 16, Learning Rate of 2e-5, Weight Decay of 0.01.
+*   **Token Alignment:** Handled subword tokenization by mapping extra tokens to `-100` to properly calculate PyTorch loss for word-level predictions.
+
+## Evaluation Metrics
+The model was evaluated on a held-out 20% test split, achieving the following performance metrics:
+*   **Accuracy:** 81.73%
+*   **F1 Score:** 66.05%
+*   **Precision:** 74.74%
+*   **Recall:** 59.17%
+*   **Validation Loss:** 0.5855
+
+## Repository Contents & Deployment Links
+*   **Notebook:** `SI26-Week7-maryam.ipynb` — Contains the complete pipeline for data loading, label mapping, subword token alignment, model training, and metric evaluation.
+*   **Fine-Tuned Model:** [xlm-roberta-code-switching-si26 on Hugging Face](https://huggingface.co/Maryam657775/xlm-roberta-code-switching-si26)
+*   **Source Dataset:** [code-switching-codesaviours-si26-maryam](https://huggingface.co/datasets/Maryam657775/code-switching-codesaviours-si26-maryam)
+
+---
+*Built for the Code Saviours Cohort SI-26 Machine Learning Pipeline.*
